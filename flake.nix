@@ -1,5 +1,5 @@
 {
-  description = "Upload files to the internet";
+  description = "Simple permutation cipher tool";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
@@ -14,9 +14,18 @@
         };
       in
       {
-        name = "upload";
+        name = "permutate";
 
-        packages.default = pkgs.callPackage ./default.nix { };
+        packages.default = pkgs.rustPlatform.buildRustPackage {
+          pname = "permutate";
+          version = "0.1.0";
+
+          src = ./.;
+          cargoLock = {
+            lockFile = ./Cargo.lock;
+          };
+        };
+
         devShell = pkgs.mkShell {
           buildInputs = [
             pkgs.rust.packages.stable.rustPlatform.rustLibSrc
