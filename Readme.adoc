@@ -12,7 +12,7 @@ Students:: Eichhorn Lennart 759253
 include::src/main.rs[]
 ----
 
-You can get a temporary shell with the `permutate` program by running `nix shell github:zebreus/hda-cryptography-lab1` with [nix](https://determinate.systems/posts/determinate-nix-installer/).
+You can get a temporary shell with the `permutate` program by running `nix shell github:zebreus/hda-cryptography-lab1` with https://determinate.systems/posts/determinate-nix-installer/[nix].
 
 .Using `permutate` to encipher the supplied inputs
 [source,console]
