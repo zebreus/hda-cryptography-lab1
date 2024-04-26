@@ -11,7 +11,8 @@ Students:: Eichhorn Lennart 759253
 include::src/main.rs[]
 ----
 
-.Running `permutate` with the supplied inputs
+You can get a temporary shell with the `permutate` program by running `nix shell github:zebreus/hda-cryptography-lab1` with [nix](https://determinate.systems/posts/determinate-nix-installer/).
+
 [source,console]
 ----
 $ permutate --text helloworld --key 13042
