@@ -1,24 +1,19 @@
 use std::ops::Rem;
 
 use clap::Parser;
-
-/// Simple program to greet a person
+/// Run a simple permutation cipher on the given text
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
 struct Args {
-    /// Content of the ciphertext
+    /// Input text to encrypt or decrypt
     #[arg(short, long)]
     text: String,
 
-    /// Key to use for the permutation. Must be a string of numbers
+    /// Key to use for the permutation. Must be a N long string of numbers containing all numbers from 0 to N-1
     #[arg(short, long)]
     key: String,
 
-    /// Encrypt the message
-    #[arg(short, long)]
-    encrypt: bool,
-
-    /// Decrypt the message
+    /// Decrypt the message instead of encrypting it
     #[arg(short, long)]
     decrypt: bool,
 }
@@ -42,15 +37,15 @@ fn main() {
         },
     );
 
-    let key = if args.encrypt {
-        encryption_key
-    } else {
+    let key = if args.decrypt {
         decryption_key
+    } else {
+        encryption_key
     };
 
     let mut input = args.text.chars().collect::<Vec<_>>();
     let padding_length = (key.len() - input.len().rem(key.len())).rem(key.len());
-    input.extend(std::iter::repeat('_').take(padding_length));
+    input.extend(std::iter::repeat('x').take(padding_length));
 
     let output: String = input
         .chunks_exact(key.len())
@@ -58,5 +53,5 @@ fn main() {
         .flat_map(|unit| (0..key.len()).map(|index| unit[key[index]]))
         .collect::<String>();
 
-    println!("{:?}", output);
+    println!("{}", output);
 }
