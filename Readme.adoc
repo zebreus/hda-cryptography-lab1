@@ -1,4 +1,5 @@
 = Praktikum 1
+:source-highlighter: rouge
 
 Date:: 25.04.2024
 Students:: Eichhorn Lennart 759253
@@ -13,6 +14,7 @@ include::src/main.rs[]
 
 You can get a temporary shell with the `permutate` program by running `nix shell github:zebreus/hda-cryptography-lab1` with [nix](https://determinate.systems/posts/determinate-nix-installer/).
 
+.Using `permutate` to encipher the supplied inputs
 [source,console]
 ----
 $ permutate --text helloworld --key 13042
@@ -21,6 +23,17 @@ $ permutate --text publicvoidmain --key 13042
 ulpibvicdoanmxi
 $ permutate --text thisisnotamiracle --key 13042
 hstiintsaoiamcrexlxx
+----
+
+.Using `permutate` to decipher the them again
+[source,console]
+----
+$ permutate --text elhololwdr --key 13042 -d
+helloworld
+$ permutate --text ulpibvicdoanmxi --key 13042 -d
+publicvoidmainx
+$ permutate --text hstiintsaoiamcrexlxx --key 13042 -d
+thisisnotamiraclexxx
 ----
 
 == Cryptanalysis and CrypTool
